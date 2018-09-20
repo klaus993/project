@@ -1,0 +1,48 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: project-web
+  labels:
+    project: project
+    role: web
+spec:
+  replicas: 1
+  strategy:
+    type: "RollingUpdate"
+    rollingUpdate:
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      project: project
+      role: web
+  template:
+    metadata:
+      labels:
+        project: project
+        role: web
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: project-web
+        image: 655555973700.dkr.ecr.us-east-1.amazonaws.com/project:latest
+        env:
+        - name: SOME_VAR
+          value: "some value deploy"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: project-web
+  labels:
+    project: project
+    role: web
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    name: http
+    protocol: TCP
+  selector:
+    project: project
+    role: web

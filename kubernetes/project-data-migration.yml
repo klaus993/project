@@ -2,20 +2,20 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: job
+  name: data-migration
   labels:
     project: project
-    role: job
+    role: data-migration
 spec:
   template:
     metadata:
       labels:
         project: project
-        role: job
+        role: data-migration
     spec:
       restartPolicy: Never
       containers:
-      - name: project-job
+      - name: project-data-migration
         image: 655555973700.dkr.ecr.us-east-1.amazonaws.com/project:latest
         command: ["sh", "-c", "sleep 10; echo $SOME_VAR; echo Hello!"]
         env:
