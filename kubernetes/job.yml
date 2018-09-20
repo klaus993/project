@@ -1,0 +1,23 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job
+  labels:
+    project: project
+    role: job
+spec:
+  template:
+    metadata:
+      labels:
+        project: project
+        role: job
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: project-job
+        image: 655555973700.dkr.ecr.us-east-1.amazonaws.com/project:latest
+        command: ["sh", "-c", "sleep 10; echo $SOME_VAR; echo Hello!"]
+        env:
+        - name: SOME_VAR
+          value: "some value"
