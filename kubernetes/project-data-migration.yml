@@ -2,6 +2,8 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
+  annotations:
+    samson/prerequisite: "true"
   name: data-migration
   labels:
     project: project
