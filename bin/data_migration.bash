@@ -4,4 +4,5 @@ then
 else
     echo "\$SCRIPT is NOT empty, executing script"
     echo "execute /path/to/script/$SCRIPT"
+    sleep 20
 fi
