@@ -4,6 +4,7 @@ kind: Job
 metadata:
   annotations:
     samson/prerequisite: "true"
+    #samson/show_logs_on_success: "true"
   name: data-migration
   labels:
     project: project
@@ -14,6 +15,8 @@ spec:
       labels:
         project: project
         role: data-migration
+      annotations:
+        samson/show_logs_on_success: "true"
     spec:
       restartPolicy: Never
       containers:
