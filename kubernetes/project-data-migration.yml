@@ -16,7 +16,7 @@ spec:
         project: project
         role: data-migration
       annotations:
-        samson/show_logs_on_success: "true"
+        samson/show_logs_on_deploy: "true"
     spec:
       restartPolicy: Never
       containers:
