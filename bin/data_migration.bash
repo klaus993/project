@@ -1,3 +1,5 @@
+echo "XXX: hola amigos"
+
 if [ -z "$SCRIPT" ]
 then
     echo "\$SCRIPT is empty, proceeding with deploy."
